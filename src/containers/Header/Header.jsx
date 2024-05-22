@@ -13,10 +13,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import ComputerIcon from '@mui/icons-material/Computer';
+import Logo from '../../assets/storedata.png'
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
-import { ListItem, ListItemIcon, Switch } from '@mui/material';
-import Brightness3Icon from '@mui/icons-material/Brightness3';
+
+import ModeSelect from '../ModeSelect/ModeSelect';
+import { Avatar } from '@mui/material';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -61,10 +62,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Header({setMode, mode}) {
 
-  const handleToggleMode = () => {
-    setMode(mode === 'light' ? 'dark' : 'light')
-  }
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -72,6 +69,7 @@ export default function Header({setMode, mode}) {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
+    console.log(event)
     setAnchorEl(event.currentTarget);
   };
 
@@ -86,26 +84,31 @@ export default function Header({setMode, mode}) {
 
 
   const menuId = 'primary-search-account-menu';
-  const renderMenu = (
+
+  const renderMenuAvatar = (
     <Menu
+      sx={{marginTop: '32px'}}
       anchorEl={anchorEl}
       anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: 'bottom',
+        horizontal: 'left',
       }}
       id={menuId}
       keepMounted
       transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: 'bottom',
+        horizontal: 'left',
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+
     </Menu>
   );
+
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
@@ -165,15 +168,25 @@ export default function Header({setMode, mode}) {
 
   const handleCloseNavMenu = () => {
     // setAnchorElNav(null);
-  };
+  }
 
   const pages = ['Products', 'Pricing', 'Blog'];
 
   return (
-    <Box sx={{ flexGrow: 1}} >
-      <AppBar position="static" sx={{px: 20}}>
-        <Toolbar>
-          <ComputerIcon fontSize='large'/>
+    <Box sx={{ flexGrow: 1} }>
+      <AppBar position="static" sx={{px: 40, height: '100px', display: 'flex', justifyContent: 'center', boxShadow: 'none', borderBottom: '2px solid #2d3436'}}>
+        <Toolbar >
+          <Avatar alt="Logo" src={Logo} sx={{ width: 80, height: 80, marginRight: '16px' }}/>
+
+          <Search style={{borderRadius: '10px'}}>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase sx={{width: 500, height: 70}}
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
 
           <Box display='flex' flexDirection='row'>
             {pages.map((page) => (
@@ -183,31 +196,16 @@ export default function Header({setMode, mode}) {
                 ))}
           </Box>
 
-          <Search style={{borderRadius: '10px'}}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase sx={{width: 500}}
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-
           <Box sx={{ flexGrow: 1 }} />
-
-  
   
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 
-              <ListItem>
-                <Switch onChange={handleToggleMode}/>
-                <ListItemIcon>
-                  <Brightness3Icon color='green'/>
-                </ListItemIcon>
-              </ListItem>
+              <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', mx: '15px'}}>
+                <ModeSelect mode={mode} setMode={setMode}/>
+              </Box>
 
               <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                <Badge badgeContent={4} color="error">
+                <Badge badgeContent={4} color="error" max={9}>
                   <LocalMallOutlinedIcon/>
                 </Badge>
               </IconButton>
@@ -217,14 +215,10 @@ export default function Header({setMode, mode}) {
                 aria-label="show 17 new notifications"
                 color="inherit"
               >
-                <Badge badgeContent={17} color="error">
+                <Badge badgeContent={17} color="error" max={9}>
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
-
-              
-             
-              
 
               <IconButton
                 size="large"
@@ -239,12 +233,12 @@ export default function Header({setMode, mode}) {
               </IconButton>
             </Box>
 
-            
-  
         </Toolbar>
       </AppBar>
+
+
       {renderMobileMenu}
-      {renderMenu}
+      {renderMenuAvatar}
     </Box>
   );
 }

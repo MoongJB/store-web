@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 import { createTheme, ThemeProvider } from '@mui/material';
+import Box from '@mui/material/Box';
+
 
 import Header from "./Header/Header"
 
@@ -13,9 +15,12 @@ const Web = () => {
   })
   return (
     <>
+    <Box>
     <ThemeProvider theme={customTheme}> 
       <Header mode={mode} setMode={setMode}/>
     </ThemeProvider>
+    </Box>
+
     </>
   )
 }
