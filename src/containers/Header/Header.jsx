@@ -11,13 +11,13 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import Logo from '../../assets/storedata.png'
+import Logo from '../../assets/logo.jpg'
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
-
+import Divider from '@mui/material/Divider';
 import ModeSelect from '../ModeSelect/ModeSelect';
 import { Avatar } from '@mui/material';
+import Nav from './Nav'
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -63,31 +63,53 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Header({setMode, mode}) {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
   const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const [anchorElNotification, setAnchorElNOtification] = React.useState(null);
+  const isMenuNotificationOpen = Boolean(anchorElNotification);
+
+  const [anchorElCart, setAnchorElCart] = React.useState(null);
+  const isMenuCartOpen = Boolean(anchorElCart);
+  
 
   const handleProfileMenuOpen = (event) => {
     console.log(event)
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
+  const handleNotificationMenuOpen = (event) => {
+    console.log(event)
+    setAnchorElNOtification(event.currentTarget);
   };
+
+  const handleCartMenuOpen = (event) => {
+    console.log(event)
+    setAnchorElCart(event.currentTarget);
+  };
+
 
   const handleMenuClose = () => {
     setAnchorEl(null);
-    handleMobileMenuClose();
+  };
+
+  const handleMenuNotificationClose = () => {
+    setAnchorElNOtification(null);
+  };
+
+  const handleMenuCartClose = () => {
+    setAnchorElCart(null);
   };
 
 
+
   const menuId = 'primary-search-account-menu';
+  const notificationId = 'primary-search-notification-menu'
+  const cartId = 'primary-search-card-menu'
+
 
   const renderMenuAvatar = (
     <Menu
-      sx={{marginTop: '32px'}}
+      sx={{marginTop: '50px', marginLeft: '35px'}}
       anchorEl={anchorEl}
       anchorOrigin={{
         vertical: 'bottom',
@@ -109,75 +131,135 @@ export default function Header({setMode, mode}) {
     </Menu>
   );
 
-
-  const mobileMenuId = 'primary-search-account-menu-mobile';
-  const renderMobileMenu = (
+  const renderMenuNotification = (
     <Menu
-      anchorEl={mobileMoreAnchorEl}
+      sx={{marginTop: '50px'}}
+      PaperProps={{
+        style: {
+          minWidth: '500px', // Set your desired minimum width
+          minHeight: '500px', // Set your desired minimum height
+        },
+      }}
+      anchorEl={anchorElNotification}
       anchorOrigin={{
-        vertical: 'top',
+        vertical: 'bottom',
         horizontal: 'right',
       }}
-      id={mobileMenuId}
+      id={notificationId}
       keepMounted
       transformOrigin={{
-        vertical: 'top',
+        vertical: 'bottom',
         horizontal: 'right',
       }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
+      open={isMenuNotificationOpen}
+      onClose={handleMenuNotificationClose}
     >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+      <Box>
+        <Box>
+          <Typography variant='h6'>Products in the shopping cart</Typography>
+        </Box>
+        <Divider />
+        <Box>
+        <MenuItem onClick={handleMenuNotificationClose}>
+          <Box>
+            Item 1
+          </Box>
+        </MenuItem>
+        <MenuItem onClick={handleMenuNotificationClose}>
+          <Box>
+            Item 1
+          </Box>
+        </MenuItem>
+        <MenuItem onClick={handleMenuNotificationClose}>
+          <Box>
+            Item 1
+          </Box>
+        </MenuItem>
+        </Box>
+      </Box>
+      
+      
     </Menu>
   );
 
-  // const handleOpenNavMenu = (event) => {
-  //   setAnchorElNav(event.currentTarget);
-  // };
+  const renderMenuCart = (
+    <Menu
+      sx={{marginTop: '50px'}}
+      PaperProps={{
+        style: {
+          minWidth: '500px', // Set your desired minimum width
+          minHeight: '500px', // Set your desired minimum height
+        },
+      }}
+      anchorEl={anchorElCart}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'right',
+      }}
+      id={cartId}
+      keepMounted
+      transformOrigin={{
+        vertical: 'bottom',
+        horizontal: 'right',
+      }}
+      open={isMenuCartOpen}
+      onClose={handleMenuCartClose}
+    >
+      
+      <Box p={2}>
+        <Box>
+          <Typography variant='h6' align='center' gutterBottom={2}>Products in the shopping cart</Typography>
+        </Box>
+
+        <Divider/>
+
+        <Box py={5} display='flex' flexDirection='column' gap={5}>
+          <MenuItem onClick={handleMenuNotificationClose}>
+            <Box>
+              Item 1
+            </Box>
+          </MenuItem>
+          <MenuItem onClick={handleMenuNotificationClose}>
+            <Box>
+              Item 1
+            </Box>
+          </MenuItem>
+          <MenuItem onClick={handleMenuNotificationClose}>
+            <Box>
+              Item 1
+            </Box>
+          </MenuItem>
+        </Box>
+
+        <Box>
+          <Divider/>
+          <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center' >
+            <Typography variant='h6' color='warning.main' align='center'>Total: </Typography>
+            <Typography variant='h6' color='error' align='center' gutterBottom={2}>5000</Typography>
+          </Box>
+          <Box sx={{float: 'right'}}>
+            <Typography variant='body1' sx={{fontWeight: 'bold'}} color='primary'>Payment</Typography>
+          </Box>
+        </Box>
+      </Box>
+      
+    </Menu>
+  );
+
 
   const handleCloseNavMenu = () => {
-    // setAnchorElNav(null);
+    //something here.....
   }
 
   const pages = ['Products', 'Pricing', 'Blog'];
 
   return (
     <Box sx={{ flexGrow: 1} }>
-      <AppBar position="static" sx={{px: 40, height: '100px', display: 'flex', justifyContent: 'center', boxShadow: 'none', borderBottom: '2px solid #2d3436'}}>
+      <AppBar position="static" sx={{px: 40, height: '100px', display: 'flex', justifyContent: 'center', boxShadow: 'none'}}>
         <Toolbar >
-          <Avatar alt="Logo" src={Logo} sx={{ width: 80, height: 80, marginRight: '16px' }}/>
 
+          <Avatar alt="Logo" src={Logo} sx={{ width: 80, height: 80, marginRight: '16px', objectFit: 'contain' }}/>
+          
           <Search style={{borderRadius: '10px'}}>
             <SearchIconWrapper>
               <SearchIcon />
@@ -188,7 +270,7 @@ export default function Header({setMode, mode}) {
             />
           </Search>
 
-          <Box display='flex' flexDirection='row'>
+          <Box display='flex' flexDirection='row' gap={1}>
             {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page}</Typography>
@@ -204,7 +286,14 @@ export default function Header({setMode, mode}) {
                 <ModeSelect mode={mode} setMode={setMode}/>
               </Box>
 
-              <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+              <IconButton 
+                size="large" 
+                aria-label="show mail" 
+                color="inherit"
+                aria-controls={cartId}
+                aria-haspopup="true"
+                onClick={handleCartMenuOpen}
+                >
                 <Badge badgeContent={4} color="error" max={9}>
                   <LocalMallOutlinedIcon/>
                 </Badge>
@@ -212,8 +301,12 @@ export default function Header({setMode, mode}) {
 
               <IconButton
                 size="large"
-                aria-label="show 17 new notifications"
+                aria-label="show notifications"
                 color="inherit"
+                aria-controls={notificationId}
+                aria-haspopup="true"
+                onClick={handleNotificationMenuOpen}
+
               >
                 <Badge badgeContent={17} color="error" max={9}>
                   <NotificationsIcon />
@@ -235,9 +328,12 @@ export default function Header({setMode, mode}) {
 
         </Toolbar>
       </AppBar>
+      <Box>
+        <Nav />
+      </Box>
 
-
-      {renderMobileMenu}
+      {renderMenuCart}
+      {renderMenuNotification}
       {renderMenuAvatar}
     </Box>
   );

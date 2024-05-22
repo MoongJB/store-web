@@ -5,6 +5,8 @@ import Box from '@mui/material/Box';
 
 
 import Header from "./Header/Header"
+import Body from './Body/Body';
+import Footer from './Footer/Footer';
 
 const Web = () => {
   const [mode, setMode] = useState('light')
@@ -18,6 +20,8 @@ const Web = () => {
     <Box>
     <ThemeProvider theme={customTheme}> 
       <Header mode={mode} setMode={setMode}/>
+      <Body/>
+      <Footer/>
     </ThemeProvider>
     </Box>
 
