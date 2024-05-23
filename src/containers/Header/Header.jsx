@@ -16,7 +16,7 @@ import Logo from '../../assets/logo.jpg'
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import Divider from '@mui/material/Divider';
 import ModeSelect from '../ModeSelect/ModeSelect';
-import { Avatar } from '@mui/material';
+import { Avatar, Button } from '@mui/material';
 import Nav from './Nav'
 
 
@@ -126,6 +126,7 @@ export default function Header({setMode, mode}) {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Dashboard</MenuItem>
       <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
 
     </Menu>
@@ -154,28 +155,32 @@ export default function Header({setMode, mode}) {
       open={isMenuNotificationOpen}
       onClose={handleMenuNotificationClose}
     >
-      <Box>
+      <Box p={2}>
         <Box>
-          <Typography variant='h6'>Products in the shopping cart</Typography>
+          <Typography variant='h6' align='center' gutterBottom={2} fontWeight='bold'>Notification</Typography>
         </Box>
-        <Divider />
-        <Box>
-        <MenuItem onClick={handleMenuNotificationClose}>
-          <Box>
-            Item 1
-          </Box>
-        </MenuItem>
-        <MenuItem onClick={handleMenuNotificationClose}>
-          <Box>
-            Item 1
-          </Box>
-        </MenuItem>
-        <MenuItem onClick={handleMenuNotificationClose}>
-          <Box>
-            Item 1
-          </Box>
-        </MenuItem>
+
+        <Divider/>
+
+        <Box py={5} display='flex' flexDirection='column' gap={5}>
+          <MenuItem onClick={handleMenuNotificationClose}>
+            <Box>
+              Item 1
+            </Box>
+          </MenuItem>
+          <MenuItem onClick={handleMenuNotificationClose}>
+            <Box>
+              Item 1
+            </Box>
+          </MenuItem>
+          <MenuItem onClick={handleMenuNotificationClose}>
+            <Box>
+              Item 1
+            </Box>
+          </MenuItem>
         </Box>
+
+        
       </Box>
       
       
@@ -208,7 +213,7 @@ export default function Header({setMode, mode}) {
       
       <Box p={2}>
         <Box>
-          <Typography variant='h6' align='center' gutterBottom={2}>Products in the shopping cart</Typography>
+          <Typography variant='h6' align='center' gutterBottom={2} fontWeight='bold'>Products in the your shopping cart</Typography>
         </Box>
 
         <Divider/>
@@ -235,10 +240,13 @@ export default function Header({setMode, mode}) {
           <Divider/>
           <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center' >
             <Typography variant='h6' color='warning.main' align='center'>Total: </Typography>
-            <Typography variant='h6' color='error' align='center' gutterBottom={2}>5000</Typography>
+            <Typography variant='h6' color='error' align='center' gutterBottom={2}>5.000.000</Typography>
           </Box>
           <Box sx={{float: 'right'}}>
-            <Typography variant='body1' sx={{fontWeight: 'bold'}} color='primary'>Payment</Typography>
+            <Button variant='contained'>
+              Payment
+            </Button>
+
           </Box>
         </Box>
       </Box>
