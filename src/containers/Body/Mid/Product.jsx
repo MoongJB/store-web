@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 
 import Rating from "@mui/material/Rating";
+import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 
 import { useState } from "react";
 
@@ -24,14 +26,26 @@ const Product = () => {
           // alt={item.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="body2" component="div">
+          <Typography gutterBottom variant="body2" component="div" align="left">
             A camera is an instrument used to capture and store images and
             videos
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            align="left"
+            sx={{ color: (theme) => theme.palette.error.main }}
+            gutterBottom={1}
+          >
             3.000.000
           </Typography>
-          <Rating value={rating} onChange={(e) => setRating(+e.target.value)} />
+          <Box sx={{ textAlign: "left" }}>
+            <Rating
+              value={rating}
+              onChange={(e) => setRating(+e.target.value)}
+              sx={{ fontSize: "15px" }}
+            />
+          </Box>
         </CardContent>
       </CardActionArea>
       <Box
@@ -41,7 +55,12 @@ const Product = () => {
         justifyContent="space-between"
         mx={3}
       >
-        <Button size="small" color="primary" variant="outlined">
+        <Button
+          size="small"
+          color="primary"
+          variant="outlined"
+          endIcon={<AddShoppingCartOutlinedIcon />}
+        >
           Add to Cart
         </Button>
         <Button
@@ -49,6 +68,7 @@ const Product = () => {
           color="warning"
           variant="contained"
           sx={{ minWidth: "100px" }}
+          endIcon={<PaymentsOutlinedIcon />}
         >
           Buy
         </Button>
