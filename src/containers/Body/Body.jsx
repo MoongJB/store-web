@@ -5,7 +5,7 @@ import Mid from './Mid/Mid'
 const Body = () => {
   return ( 
     <>
-    <Box height={800} mx={40}>
+    <Box minHeight='100vh' mx={40}>
       <Mid/>
     </Box>
     </>

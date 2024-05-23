@@ -17,7 +17,7 @@ import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import Divider from '@mui/material/Divider';
 import ModeSelect from '../ModeSelect/ModeSelect';
 import { Avatar, Button } from '@mui/material';
-import Nav from './Nav'
+import { NavLink } from "react-router-dom";
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -70,6 +70,7 @@ export default function Header({setMode, mode}) {
 
   const [anchorElCart, setAnchorElCart] = React.useState(null);
   const isMenuCartOpen = Boolean(anchorElCart);
+
   
 
   const handleProfileMenuOpen = (event) => {
@@ -127,7 +128,13 @@ export default function Header({setMode, mode}) {
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
       <MenuItem onClick={handleMenuClose}>Dashboard</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <NavLink to='/signin' style={{ textDecoration: 'none' }}>
+          <Typography  sx={{color: 'black','&:hover': {color: 'primary.main',}}}>
+            Sign In
+          </Typography>
+        </NavLink>
+      </MenuItem>
 
     </Menu>
   );
@@ -336,9 +343,6 @@ export default function Header({setMode, mode}) {
 
         </Toolbar>
       </AppBar>
-      <Box>
-        <Nav />
-      </Box>
 
       {renderMenuCart}
       {renderMenuNotification}
