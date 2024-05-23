@@ -1,19 +1,18 @@
-import Body from "../containers/Body/Body"
-import SignIn from "../containers/Authen/Login"
-import SignUp from "../containers/Authen/SignUp"
+import Body from "../containers/Body/Body";
+import SignIn from "../containers/Authen/SignIn";
+import SignUp from "../containers/Authen/SignUp";
 
 export const publicRoutes = [
   {
-    path: '/signin',
-    element: SignIn
+    path: "/sign-in",
+    element: SignIn,
   },
   {
-    path: '/signup',
-    element: SignUp
+    path: "/sign-up",
+    element: SignUp,
   },
   {
-    path: '/',
-    element: Body
-  }
-  
-]
+    path: "/",
+    element: Body,
+  },
+];
