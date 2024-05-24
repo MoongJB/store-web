@@ -17,12 +17,13 @@ import { useState } from "react";
 const Product = () => {
   const [rating, setRating] = useState(5);
   return (
-    <Box border="none" padding={2}>
-      <CardActionArea>
+    <Box border="none" padding={2} borderRadius="20px">
+      <CardActionArea sx={{ borderRadius: "20px", marginBottom: "5px" }}>
         <CardMedia
           component="img"
           height="200"
           image={image}
+          sx={{ borderRadius: "20px" }}
           // alt={item.name}
         />
         <CardContent>
@@ -35,7 +36,7 @@ const Product = () => {
             color="text.secondary"
             align="left"
             sx={{ color: (theme) => theme.palette.error.main }}
-            gutterBottom={1}
+            gutterBottom
           >
             3.000.000
           </Typography>
@@ -51,17 +52,17 @@ const Product = () => {
       <Box
         display="flex"
         flexDirection="row"
-        gap={6}
         justifyContent="space-between"
-        mx={3}
+        mx={6}
       >
         <Button
           size="small"
           color="primary"
           variant="outlined"
           endIcon={<AddShoppingCartOutlinedIcon />}
+          sx={{ minWidth: "100px" }}
         >
-          Add to Cart
+          Cart
         </Button>
         <Button
           size="small"

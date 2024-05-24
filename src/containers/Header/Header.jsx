@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -59,14 +59,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Header({ setMode, mode }) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+export default function Header() {
+  const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
 
-  const [anchorElNotification, setAnchorElNOtification] = React.useState(null);
+  const [anchorElNotification, setAnchorElNOtification] = useState(null);
   const isMenuNotificationOpen = Boolean(anchorElNotification);
 
-  const [anchorElCart, setAnchorElCart] = React.useState(null);
+  const [anchorElCart, setAnchorElCart] = useState(null);
   const isMenuCartOpen = Boolean(anchorElCart);
 
   const handleProfileMenuOpen = (event) => {
@@ -160,7 +160,7 @@ export default function Header({ setMode, mode }) {
           <Typography
             variant="h6"
             align="center"
-            gutterBottom={2}
+            gutterBottom
             fontWeight="bold"
           >
             Notification
@@ -212,7 +212,7 @@ export default function Header({ setMode, mode }) {
           <Typography
             variant="h6"
             align="center"
-            gutterBottom={2}
+            gutterBottom
             fontWeight="bold"
           >
             Products in the your shopping cart
@@ -244,12 +244,7 @@ export default function Header({ setMode, mode }) {
             <Typography variant="h6" color="warning.main" align="center">
               Total:{" "}
             </Typography>
-            <Typography
-              variant="h6"
-              color="error"
-              align="center"
-              gutterBottom={2}
-            >
+            <Typography variant="h6" color="error" align="center" gutterBottom>
               5.000.000
             </Typography>
           </Box>
@@ -323,7 +318,7 @@ export default function Header({ setMode, mode }) {
                 mx: "15px",
               }}
             >
-              <ModeSelect mode={mode} setMode={setMode} />
+              <ModeSelect />
             </Box>
 
             <IconButton

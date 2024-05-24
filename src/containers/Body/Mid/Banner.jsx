@@ -71,7 +71,12 @@ const ImageSlider = () => {
         <img
           src={images[index]}
           alt={`Slide ${index}`}
-          style={{ width: "100%", height: "100%", borderRadius: "20px" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: "20px",
+            cursor: "pointer",
+          }}
         />
         <IconButton
           onClick={handleNext}
@@ -109,6 +114,7 @@ const ImageSlider = () => {
               height: individualImageHeight,
               borderRadius: "10px",
               marginBottom: "10px",
+              cursor: "pointer",
             }}
           />
         ))}

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import "./ScrollToTopButton.css";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
-
+import { useTheme } from "@emotion/react";
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const theme = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,9 +32,15 @@ const ScrollToTopButton = () => {
     <button
       className={`scroll-to-top-btn ${isVisible ? "show" : ""}`}
       onClick={scrollToTop}
+      style={{
+        backgroundColor: theme.palette.mode === "dark" ? "#272727" : undefined,
+      }}
     >
       <KeyboardArrowUpOutlinedIcon
-        sx={{ color: (theme) => theme.palette.error.main }}
+        sx={{
+          color: (theme) => theme.palette.primary.main,
+          textDecoration: "bold",
+        }}
       />
     </button>
   );

@@ -1,0 +1,41 @@
+{
+  "cameras": [
+    {
+      "camera_id": 1,
+      "brand": "Canon",
+      "price": 799.99,
+      "on_sale": 30,
+      "description": "This is super camera",
+      "quantity": 32
+    },
+    {
+      "camera_id": 1,
+      "brand": "ABC",
+      "price": 799.99,
+      "on_sale": 30,
+      "description": "This is super camera",
+      "quantity": 32
+    }
+  ],
+  "computer": [
+    {
+      "camera_id": 1,
+      "brand": "Canon",
+      "model": "EOS Rebel T7i",
+      "type": "DSLR",
+      "resolution": "24.2 MP",
+      "price": 799.99
+    }
+  ],
+  "service": [
+    {
+      "camera_id": 1,
+      "brand": "Canon",
+      "model": "EOS Rebel T7i",
+      "type": "DSLR",
+      "resolution": "24.2 MP",
+      "price": 799.99
+    }
+  ]
+  
+}

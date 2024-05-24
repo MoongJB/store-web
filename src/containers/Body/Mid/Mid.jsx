@@ -36,9 +36,15 @@ export default function RowAndColumnSpacing() {
       </Box>
       <Box>
         <Box my={5} marginBottom={20}>
-          <Box display="flex" flexDirection="row" gap={20}>
-            <Title variant="h5">Laptop Bán Chạy Trong Tháng 5</Title>
-            <Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+          >
+            <Title variant="h5" sx={{ letterSpacing: "0.5em" }}>
+              lap top
+            </Title>
+            <Box display="flex" flexDirection="row">
               <Stack direction="row" spacing={1}>
                 <Chip
                   label="Apple"
@@ -46,6 +52,14 @@ export default function RowAndColumnSpacing() {
                   href="#basic-chip"
                   variant="outlined"
                   clickable
+                  sx={{
+                    // bgcolor: (theme) =>
+                    //   theme.palette.mode === "dark"
+                    //     ? theme.palette.warning.main
+                    //     : undefined,
+                    color: (theme) => theme.palette.error.main,
+                    fontWeight: "bold",
+                  }}
                 />
               </Stack>
             </Box>
@@ -59,7 +73,7 @@ export default function RowAndColumnSpacing() {
             >
               {[...Array(6).keys()].map((index) => (
                 <StyledGridItem item xs={4} key={index}>
-                  <Item sx={{ borderRadius: "20px" }}>
+                  <Item sx={{ borderRadius: "30px" }}>
                     <Product />
                   </Item>
                 </StyledGridItem>
