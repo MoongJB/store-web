@@ -1,41 +1,103 @@
 {
   "cameras": [
     {
-      "camera_id": 1,
-      "brand": "Canon",
-      "price": 799.99,
-      "on_sale": 30,
-      "description": "This is super camera",
-      "quantity": 32
+      "id": 1,
+      "description": "Amazing product, highly recommended!, i trust you baby, A camera is an instrument used to capture and store images and videos, either digitally via an electronic image sensor, or chemically via a light-sensitive material such as photographic film.  ",
+      "price": 2000000,
+      "image": "/img1.jpg",
+      "rating": 4,
+      "sale": 35
     },
     {
-      "camera_id": 1,
-      "brand": "ABC",
-      "price": 799.99,
-      "on_sale": 30,
-      "description": "This is super camera",
-      "quantity": 32
+      "id": 2,
+      "description": "Incredible quality, worth every penny!",
+      "price": 2500000,
+      "image": "/img1.jpg",
+      "rating": 4,
+      "sale": 28
+    },
+    {
+      "id": 3,
+      "description": "Top-notch, unmatched performance!",
+      "price": 1800000,
+      "image": "/img1.jpg",
+      "rating": 3,
+      "sale": 40
+    },
+    {
+      "id": 4,
+      "description": "Exceptional value for money, buy it now!",
+      "price": 2200000,
+      "image": "/img1.jpg",
+      "rating": 5,
+      "sale": 31
+    },
+    {
+      "id": 5,
+      "description": "Exceptional value for money, buy it now!",
+      "price": 2200000,
+      "image": "/img1.jpg",
+      "rating": 2,
+      "sale": 31
+    },
+    {
+      "id": 6,
+      "description": "Exceptional value for money, buy it now!",
+      "price": 2200000,
+      "image": "/img1.jpg",
+      "rating": 4,
+      "sale": 31
     }
+    
   ],
   "computer": [
     {
-      "camera_id": 1,
-      "brand": "Canon",
-      "model": "EOS Rebel T7i",
-      "type": "DSLR",
-      "resolution": "24.2 MP",
-      "price": 799.99
-    }
-  ],
-  "service": [
+      "id": 1,
+      "description": "Exceptional value for money, buy it now!",
+      "price": 2200000,
+      "image": "/img1.jpg",
+      "rating": 4,
+      "sale": 31
+    },
     {
-      "camera_id": 1,
-      "brand": "Canon",
-      "model": "EOS Rebel T7i",
-      "type": "DSLR",
-      "resolution": "24.2 MP",
-      "price": 799.99
+      "id": 2,
+      "description": "Exceptional value for money, buy it now!",
+      "price": 2200000,
+      "image": "/img1.jpg",
+      "rating": 4,
+      "sale": 31
+    },
+    {
+      "id": 3,
+      "description": "Exceptional value for money, buy it now!",
+      "price": 2200000,
+      "image": "/img1.jpg",
+      "rating": 4,
+      "sale": 31
+    },
+    {
+      "id": 4,
+      "description": "Exceptional value for money, buy it now!",
+      "price": 2200000,
+      "image": "/img1.jpg",
+      "rating": 4,
+      "sale": 31
+    },
+    {
+      "id": 5,
+      "description": "Exceptional value for money, buy it now!",
+      "price": 2200000,
+      "image": "/img1.jpg",
+      "rating": 4,
+      "sale": 31
+    },
+    {
+      "id": 6,
+      "description": "Exceptional value for money, buy it now!",
+      "price": 2200000,
+      "image": "/img1.jpg",
+      "rating": 4,
+      "sale": 31
     }
   ]
-  
 }

@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "be": "json-server --watch db.json --port 8080"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -16,6 +17,8 @@
     "@mui/icons-material": "^5.15.18",
     "@mui/material": "^5.15.18",
     "@reduxjs/toolkit": "^2.2.5",
+    "axios": "^1.7.2",
+    "json-server": "^1.0.0-beta.0",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

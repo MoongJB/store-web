@@ -6,7 +6,8 @@ import Product from "./Product";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
-
+import axios from "axios";
+import { useState, useEffect } from "react";
 import Banner from "./Banner";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -29,6 +30,22 @@ const Title = styled(Typography)({
 });
 
 export default function RowAndColumnSpacing() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/cameras");
+
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <Box>
       <Box>
@@ -71,10 +88,10 @@ export default function RowAndColumnSpacing() {
               rowSpacing={1}
               columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             >
-              {[...Array(6).keys()].map((index) => (
-                <StyledGridItem item xs={4} key={index}>
+              {products.map((product) => (
+                <StyledGridItem item xs={4} key={product.id}>
                   <Item sx={{ borderRadius: "30px" }}>
-                    <Product />
+                    <Product product={product} />
                   </Item>
                 </StyledGridItem>
               ))}

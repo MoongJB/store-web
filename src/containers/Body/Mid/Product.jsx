@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import image from "../../../assets/img.jpg";
+import image from "/img.jpg";
 import {
   CardActionArea,
   CardContent,
@@ -12,10 +12,10 @@ import Rating from "@mui/material/Rating";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 
-import { useState } from "react";
-
-const Product = () => {
-  const [rating, setRating] = useState(5);
+const Product = ({ product }) => {
+  const priceSale = (oldPrice, sale) => {
+    return Math.round((1 - sale / 100) * oldPrice);
+  };
   return (
     <Box border="none" padding={2} borderRadius="20px">
       <CardActionArea sx={{ borderRadius: "20px", marginBottom: "5px" }}>
@@ -27,25 +27,51 @@ const Product = () => {
           // alt={item.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="body2" component="div" align="left">
-            A camera is an instrument used to capture and store images and
-            videos
-          </Typography>
           <Typography
-            variant="body2"
-            color="text.secondary"
-            align="left"
-            sx={{ color: (theme) => theme.palette.error.main }}
             gutterBottom
+            variant="body2"
+            component="div"
+            align="left"
+            minHeight="4.2rem"
+            sx={{
+              // Adjust the width as needed
+              maxHeight: "4.2em", // 3 lines of text at 1.5em line-height each
+              lineHeight: "1.5em", // Line height for text
+              overflow: "hidden",
+              display: "-webkit-box",
+              WebkitBoxOrient: "vertical",
+              WebkitLineClamp: 3, // Limit to 3 lines
+              textOverflow: "clip",
+              textAlign: "justify",
+            }}
           >
-            3.000.000
+            {product.description}
           </Typography>
+          <Box display="flex" gap={5}>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              align="left"
+              sx={{
+                color: (theme) => theme.palette.error.main,
+                fontSize: "20px",
+              }}
+              gutterBottom
+            >
+              {`${priceSale(product.price, product.sale).toLocaleString()}đ`}
+            </Typography>
+            <del
+              style={{
+                fontSize: "15px",
+                marginTop: "4px",
+              }}
+            >
+              {`${product.price.toLocaleString()}đ`}
+            </del>
+          </Box>
+
           <Box sx={{ textAlign: "left" }}>
-            <Rating
-              value={rating}
-              onChange={(e) => setRating(+e.target.value)}
-              sx={{ fontSize: "15px" }}
-            />
+            <Rating value={product.rating} readOnly sx={{ fontSize: "15px" }} />
           </Box>
         </CardContent>
       </CardActionArea>
